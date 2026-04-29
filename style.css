@@ -304,10 +304,14 @@ main {
 
 .about-page main {
     min-height: 100vh;
-    display: flex;
-    align-items: flex-end;
-    padding: 0;
     position: relative;
+    padding: 120px 32px 100px;
+}
+
+.about-page .content-section {
+    max-width: 55%;
+    position: relative;
+    z-index: 1;
 }
 
 /* TON ANIMATION REPLACÉE ICI */
