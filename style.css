@@ -303,11 +303,11 @@ main {
 /* About Me page: text at bottom-left */
 
 .about-page main {
-    min-height: 100vh;
-    display: flex;
-    align-items: flex-end;
-    padding: 0;
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 40px;
+    align-items: start;
+    padding: 120px 32px;
 }
 
 /* TON ANIMATION REPLACÉE ICI */
@@ -319,15 +319,11 @@ main {
 }
 
 .about-page .content-section {
-    font-size: 28px;
-    margin: 0;
-    padding: 0 32px 100px;
-    /* On limite à 55% pour ne pas percuter l'image à droite */
-    max-width: 55%;
+    max-width: 600px;
 }
 
 .about-page .about-right-column {
-    position: absolute;
+    position: static;
     font-weight: bolder;
     top: 96px;
     right: 32px;
@@ -338,10 +334,8 @@ main {
 }
 
 .about-page .about-portrait {
-    width: min(42vw, 560px);
-    max-width: none;
-    height: auto;
-    object-fit: cover;
+    width: 420px;
+    max-width: 40vw;
 }
 
 .about-page .about-social-links {
