@@ -12,7 +12,6 @@ body {
     color: #000000;
     background-color: #f5f5f5;
     font-weight: 600;
-
 }
 
 html {
@@ -305,14 +304,10 @@ main {
 
 .about-page main {
     min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0;
     position: relative;
-    padding: 120px 32px 100px;
-}
-
-.about-page .content-section {
-    max-width: 55%;
-    position: relative;
-    z-index: 1;
 }
 
 /* TON ANIMATION REPLACÉE ICI */
@@ -324,7 +319,11 @@ main {
 }
 
 .about-page .content-section {
-    font-size: clamp(18px, 1.4vw, 22px);
+    font-size: 28px;
+    margin: 0;
+    padding: 0 32px 100px;
+    /* On limite à 55% pour ne pas percuter l'image à droite */
+    max-width: 55%;
 }
 
 .about-page .about-right-column {
@@ -339,7 +338,10 @@ main {
 }
 
 .about-page .about-portrait {
-    width: clamp(260px, 30vw, 520px);
+    width: min(42vw, 560px);
+    max-width: none;
+    height: auto;
+    object-fit: cover;
 }
 
 .about-page .about-social-links {
