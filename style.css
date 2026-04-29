@@ -485,14 +485,14 @@ main {
 .project-page main p {
     max-width: 1120px;
     margin: 0 auto 48px;
-    font-size: clamp(18px, 2.2vw, 25px);
+    font-size: clamp(18px, 2.2vw, 26px);
     line-height: 1.55;
 }
 
 .project-page main p.project-note {
     max-width: 1120px;
     text-align: left;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     margin: 0 auto 48px;
 }
