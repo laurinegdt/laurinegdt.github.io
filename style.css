@@ -323,11 +323,7 @@ main {
 }
 
 .about-page .content-section {
-    font-size: 28px;
-    margin: 0;
-    padding: 0 32px 100px;
-    /* On limite à 55% pour ne pas percuter l'image à droite */
-    max-width: 55%;
+    font-size: clamp(18px, 1.4vw, 22px);
 }
 
 .about-page .about-right-column {
@@ -342,10 +338,7 @@ main {
 }
 
 .about-page .about-portrait {
-    width: min(42vw, 560px);
-    max-width: none;
-    height: auto;
-    object-fit: cover;
+    width: clamp(260px, 30vw, 520px);
 }
 
 .about-page .about-social-links {
