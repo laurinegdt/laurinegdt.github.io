@@ -14,6 +14,24 @@ body {
     font-weight: 600;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+.name-morph {
+    view-transition-name: laurine-name;
+}
+
+::view-transition-old(laurine-name),
+::view-transition-new(laurine-name) {
+    animation-duration: 420ms;
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
 /* Project pages: hero header image (half viewport height) */
 .project-page .project-hero {
     height: 50vh;
@@ -77,6 +95,36 @@ body {
     display: block;
 }
 
+/* Prevent title/meta overlap on narrower screens */
+@media (max-width: 1200px) {
+    .project-page .project-hero-title {
+        right: auto;
+        max-width: min(62vw, 820px);
+    }
+
+    .project-page .project-hero-meta {
+        max-width: min(34vw, 420px);
+    }
+}
+
+@media (max-width: 900px) {
+    .project-page .project-hero-title {
+        left: 20px;
+        right: 20px;
+        bottom: 112px;
+        max-width: none;
+    }
+
+    .project-page .project-hero-meta {
+        left: 20px;
+        right: 20px;
+        bottom: 22px;
+        text-align: left;
+        font-size: clamp(14px, 2.8vw, 18px);
+        max-width: none;
+    }
+}
+
 /* Top navigation */
 .top-nav {
     position: fixed;
@@ -101,6 +149,10 @@ body {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
+    transition: transform 0.22s ease;
+    transform-origin: left center;
+    position: relative;
+    top: 4px;
 }
 
 .nav-links {
@@ -114,13 +166,16 @@ body {
     font-size: 34px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition: transform 0.22s ease, color 0.2s ease;
+    transform-origin: right center;
+    position: relative;
+    top: 4px;
 }
 
+.logo:hover,
 .nav-links a:hover {
-    border-bottom-color: #fff;
+    transform: scale(1.5);
+
 }
 
 /* Hero slideshow */
@@ -184,7 +239,7 @@ body {
 
 /* Content sections below hero */
 main {
-    background-color: #efefe8;
+    background-color: #efe8efd2;
 
 }
 
@@ -206,9 +261,10 @@ main {
 }
 
 /* Make sure content below hero isn't hidden behind fixed nav */
+#PROJECT,
 #electronics {
     color: #ffffff;
-    scroll-margin-top: 72px;
+    scroll-margin-top: 16px;
 }
 
 #nails {
@@ -247,19 +303,81 @@ main {
     display: flex;
     align-items: flex-end;
     padding: 0;
+    position: relative;
 }
 
 .about-page .content-section {
     font-size: 28px;
+
     margin: 0;
     padding: 0 32px 100px;
     max-width: 1200px;
     /* was 960px – increase as you like (e.g. 1400px or 80%) */
 }
 
+.about-page .about-right-column {
+    position: absolute;
+    font-weight: bolder;
+    top: 96px;
+    right: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.about-page .about-portrait {
+    width: min(42vw, 560px);
+    max-width: none;
+    height: auto;
+    object-fit: cover;
+}
+
+.about-page .about-social-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.about-page .about-social-links a {
+    color: inherit;
+    text-decoration: none;
+    font-size: clamp(16px, 1.15vw, 22px);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-bottom: none;
+    transition: transform 0.22s ease, text-shadow 0.22s ease;
+    transform-origin: right center;
+    display: inline-block;
+}
+
+.about-page .about-social-links a:hover {
+    transform: scale(1.05) translateY(-1px);
+    text-shadow: 0 0 10px rgb(255, 80, 200), 0 0 18px rgb(255, 80, 179);
+}
+
 .about-page .content-section p {
     max-width: 100%;
     /* so the paragraph can use the full width of the section */
+}
+
+@media (max-width: 900px) {
+    .about-page .about-portrait {
+        width: min(56vw, 420px);
+    }
+}
+
+@media (max-width: 700px) {
+    .about-page .about-right-column {
+        position: static;
+        margin: 84px 0 20px auto;
+    }
+
+    .about-page .about-portrait {
+        width: min(82vw, 420px);
+        max-width: 100%;
+    }
 }
 
 /* Project grid (Elodie Anglade–style) */
@@ -325,6 +443,7 @@ main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+    overflow: visible;
 }
 
 @media (max-width: 900px) {
@@ -343,6 +462,13 @@ main {
     display: block;
     text-decoration: none;
     color: inherit;
+    position: relative;
+    isolation: isolate;
+    z-index: 1;
+}
+
+.project-tile:hover {
+    z-index: 100;
 }
 
 .project-main {
@@ -352,6 +478,7 @@ main {
     overflow: hidden;
     background: #eee;
     transition: transform 0.25s ease;
+    z-index: 1;
 }
 
 .project-main img {
@@ -375,6 +502,8 @@ main {
     display: flex;
     gap: 10px;
     align-items: baseline;
+    position: relative;
+    z-index: 30;
 }
 
 
@@ -414,7 +543,8 @@ main {
     color: #ffffff;
     /* Au lieu de font-size: 24px, on utilise un multiplicateur (24/19 ≈ 1.26) */
     transform: scale(2.26);
-    transform: translateZ(-90);
+    z-index: 40;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
 }
 
 /* On garde ton bandeau thumbs qui fonctionne */
@@ -432,6 +562,8 @@ main {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
     pointer-events: none;
     /* Évite que le bandeau bloque le survol du titre */
 }
@@ -489,9 +621,13 @@ main {
     line-height: 1.55;
 }
 
+.project-page main>p:first-of-type {
+    text-align: left;
+}
+
 .project-page main p.project-note {
     max-width: 1120px;
-    text-align: left;
+    text-align: right;
     font-size: 18px;
     font-weight: 400;
     margin: 0 auto 48px;
