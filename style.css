@@ -298,6 +298,8 @@ main {
 
 /* About Me page: text at bottom-left */
 
+/* About Me page: text at bottom-left */
+
 .about-page main {
     min-height: 100vh;
     display: flex;
@@ -306,13 +308,20 @@ main {
     position: relative;
 }
 
+/* TON ANIMATION REPLACÉE ICI */
+.about-page .name-morph {
+    view-transition-name: laurine-name;
+    font-size: 68px;
+    /* Taille de ton H2 d'origine */
+    margin-bottom: 16px;
+}
+
 .about-page .content-section {
     font-size: 28px;
-
     margin: 0;
     padding: 0 32px 100px;
-    max-width: 1200px;
-    /* was 960px – increase as you like (e.g. 1400px or 80%) */
+    /* On limite à 55% pour ne pas percuter l'image à droite */
+    max-width: 55%;
 }
 
 .about-page .about-right-column {
@@ -346,7 +355,6 @@ main {
     font-size: clamp(16px, 1.15vw, 22px);
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    border-bottom: none;
     transition: transform 0.22s ease, text-shadow 0.22s ease;
     transform-origin: right center;
     display: inline-block;
@@ -359,24 +367,25 @@ main {
 
 .about-page .content-section p {
     max-width: 100%;
-    /* so the paragraph can use the full width of the section */
 }
 
+/* Responsive pour pas que ça casse */
 @media (max-width: 900px) {
-    .about-page .about-portrait {
-        width: min(56vw, 420px);
+    .about-page .content-section {
+        max-width: 100%;
+        padding-top: 550px;
+        /* Espace pour laisser l'image au dessus */
     }
 }
 
 @media (max-width: 700px) {
     .about-page .about-right-column {
         position: static;
-        margin: 84px 0 20px auto;
+        margin: 84px 32px 20px auto;
     }
 
-    .about-page .about-portrait {
-        width: min(82vw, 420px);
-        max-width: 100%;
+    .about-page .content-section {
+        padding-top: 0;
     }
 }
 
