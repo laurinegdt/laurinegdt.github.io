@@ -304,94 +304,119 @@ main {
 
 /* About Me page: text at bottom-left */
 
+/* =========================
+   ABOUT PAGE LAYOUT
+========================= */
+
 .about-page main {
-    min-height: 100vh;
     display: flex;
-    align-items: flex-end;
     justify-content: space-between;
-    padding: 32px;
-    gap: 40px;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+    gap: 60px;
 }
 
 
-/* TON ANIMATION REPLACÉE ICI */
+/* =========================
+   LEFT TEXT COLUMN
+========================= */
+
+.about-page .content-section {
+    flex: 1;
+    max-width: 600px;
+    padding: 0;
+}
+
+.about-page .content-section p {
+    overflow-wrap: break-word;
+}
+
+/* =========================
+   TITLE
+========================= */
+
 .about-page .name-morph {
-    view-transition-name: laurine-name;
-    font-size: 68px;
-    /* Taille de ton H2 d'origine */
+    font-size: clamp(32px, 4vw, 68px);
     margin-bottom: 16px;
 }
 
-.about-page .content-section {
-    font-size: 20px;
-    margin: 0;
-    padding: 0 32px 100px;
-    /* On limite à 55% pour ne pas percuter l'image à droite */
-    max-width: 55%;
-}
+/* =========================
+   RIGHT COLUMN (IMAGE + LINKS)
+========================= */
 
 .about-page .about-right-column {
-    position: static;
-    font-weight: bolder;
-    top: 96px;
-    right: 32px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 14px;
+    flex-shrink: 0;
 }
 
 .about-page .about-portrait {
     width: 100%;
     max-width: 400px;
     height: auto;
+    display: block;
 }
+
+/* =========================
+   SOCIAL LINKS
+========================= */
 
 .about-page .about-social-links {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
     width: 100%;
+    justify-content: space-between;
 }
 
 .about-page .about-social-links a {
     color: inherit;
     text-decoration: none;
-    font-size: clamp(16px, 1.15vw, 22px);
+    font-size: clamp(14px, 1.2vw, 20px);
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    transition: transform 0.22s ease, text-shadow 0.22s ease;
-    transform-origin: right center;
+    transition: transform 0.2s ease, text-shadow 0.2s ease;
     display: inline-block;
 }
 
 .about-page .about-social-links a:hover {
-    transform: scale(1.05) translateY(-1px);
-    text-shadow: 0 0 10px rgb(255, 80, 200), 0 0 18px rgb(255, 80, 179);
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgb(255, 80, 200),
+        0 0 18px rgb(255, 80, 179);
 }
 
-.about-page .content-section p {
-    max-width: 100%;
-}
-
-/* Responsive pour pas que ça casse */
-@media (max-width: 900px) {
-    .about-page .content-section {
-        font-size: 20px;
-        max-width: 600px;
-    }
-}
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 700px) {
-    .about-page .about-right-column {
-        position: static;
-        margin: 84px 32px 20px auto;
+    .about-page main {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 30px;
     }
 
     .about-page .content-section {
-        padding-top: 0;
+        max-width: 100%;
+    }
+
+    .about-page .about-right-column {
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .about-page .about-portrait {
+        max-width: 100%;
+    }
+
+    .about-page .name-morph {
+        font-size: 32px;
     }
 }
+
 
 .video-wrapper {
     position: relative;
