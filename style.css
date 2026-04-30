@@ -771,20 +771,13 @@ main {
     object-fit: contain;
 }
 
-@media (max-width: 900px) {
-    .project-page .project-media.project-media-grid.project-media-3x3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        max-width: 720px;
-        gap: 1px;
-    }
+.project-page .project-media.project-media-grid.project-media-3x3 img,
+.project-page .project-media.project-media-grid.project-media-3x3 .project-video {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-@media (max-width: 600px) {
-    .project-page .project-media.project-media-grid.project-media-3x3 {
-        grid-template-columns: 1fr;
-        max-width: 720px;
-    }
-}
 
 .project-page .project-media.project-media-grid img,
 .project-page .project-media.project-media-grid .project-video {
