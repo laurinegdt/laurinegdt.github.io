@@ -1,7 +1,7 @@
 // Simple slideshow: switches to next image every 5 seconds
 const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
-const intervalMs = 5000; // 5 seconds
+const intervalMs = 4000; // 5 seconds
 
 function showSlide(index) {
     slides.forEach((slide, i) => {

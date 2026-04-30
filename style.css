@@ -230,10 +230,10 @@ html {
 }
 
 .hero-overlay h1 {
-    font-size: 75px;
-
+    font-size: clamp(32px, 8vw, 75px);
     margin-bottom: 12px;
 }
+
 
 .hero-overlay p {
     font-size: clamp(16px, 2vw, 30px);
