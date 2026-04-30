@@ -308,9 +308,11 @@ main {
     min-height: 100vh;
     display: flex;
     align-items: flex-end;
-    padding: 0;
-    position: relative;
+    justify-content: space-between;
+    padding: 32px;
+    gap: 40px;
 }
+
 
 /* TON ANIMATION REPLACÉE ICI */
 .about-page .name-morph {
@@ -329,7 +331,7 @@ main {
 }
 
 .about-page .about-right-column {
-    position: absolute;
+    position: static;
     font-weight: bolder;
     top: 96px;
     right: 32px;
@@ -340,10 +342,9 @@ main {
 }
 
 .about-page .about-portrait {
-    width: min(42vw, 560px);
-    max-width: none;
+    width: 100%;
+    max-width: 400px;
     height: auto;
-    object-fit: cover;
 }
 
 .about-page .about-social-links {
@@ -376,9 +377,8 @@ main {
 /* Responsive pour pas que ça casse */
 @media (max-width: 900px) {
     .about-page .content-section {
-        max-width: 100%;
-        padding-top: 550px;
-        /* Espace pour laisser l'image au dessus */
+        font-size: 20px;
+        max-width: 600px;
     }
 }
 
@@ -391,6 +391,21 @@ main {
     .about-page .content-section {
         padding-top: 0;
     }
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* 👈 magique */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* Project grid (Elodie Anglade–style) */
